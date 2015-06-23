@@ -1,12 +1,7 @@
 env = ENV["RACK_ENV"]
 
-#YAML::load(File.open('./config/database.yml'))[env].symbolize_keys.each do |key, value|
-#  set key, value
-#end
+require 'sinatra/activerecord'
 
-#ActiveRecord::Base.establish_connection(
-#    adapter: "mysql2",
-#    host: settings.db_host,
-#    database: settings.db_name,
-#    username: settings.db_username,
-#    password: settings.db_password)
+DB_CONFIG = YAML::load(File.open('config/database.yml'))
+
+set :database, "mysql://#{DB_CONFIG['username']}:#{DB_CONFIG['password']}@#{DB_CONFIG['host']}:#{DB_CONFIG['port']}/#{DB_CONFIG['database']}"

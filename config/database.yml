@@ -1,5 +1,6 @@
-development: &non_production_settings
-  db_name: 'development'
-  db_host: 'localhost'
-  db_username: 'root'
-  db_password: ''
+adapter: mysql2
+database: timesheet
+username: root
+password: evino123
+host: localhost
+port: 3306
